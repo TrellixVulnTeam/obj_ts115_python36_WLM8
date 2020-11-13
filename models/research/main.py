@@ -12,13 +12,13 @@ import os
 # SAMPLE_1_OF_N_EVAL_EXAMPLES = 1
 
 
-PIPELINE_CONFIG_PATH = "/home/sucom/Documents/5720_ld_20201013_all/ssdlite_mobiledet_cpu_320x320_coco_2020_05_19/pipeline.config"
+PIPELINE_CONFIG_PATH = "/home/db/桌面/目标检测项目/ts114_py36/lsd_all_test_20201110/ssdlite_mobiledet_cpu_320x320_coco_2020_05_19/pipeline.config"
 
 # MODEL_DIR = "/home/sucom/Documents/5720_ld_20201013_only_boxes/model_16"
-MODEL_DIR = "/home/sucom/Documents/5720_ld_20201013_all/model"
+MODEL_DIR = "/home/db/桌面/目标检测项目/ts114_py36/lsd_all_test_20201110/model"
 # MODEL_DIR = "/home/sucom/Documents/5720_led_20201023/model"
 
-NUM_TRAIN_STEPS = 400000
+NUM_TRAIN_STEPS = 400000000
 SAMPLE_1_OF_N_EVAL_EXAMPLES = 1
 
 os.system("python object_detection/model_main.py --pipeline_config_path=%s --model_dir=%s --num_train_steps=%s --sample_1_of_n_eval_examples=%s --alsologtostderr" % (PIPELINE_CONFIG_PATH,MODEL_DIR,NUM_TRAIN_STEPS,SAMPLE_1_OF_N_EVAL_EXAMPLES))

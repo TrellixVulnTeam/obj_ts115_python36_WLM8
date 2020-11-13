@@ -58,15 +58,7 @@ FLAGS = flags.FLAGS
 def main(unused_argv):
   flags.mark_flag_as_required('model_dir')
   flags.mark_flag_as_required('pipeline_config_path')
-  # config = tf.estimator.RunConfig(model_dir=FLAGS.model_dir)
-  # session_config = tf.ConfigProto(allow_soft_placement=True, log_device_placement=False)
-  # session_config.gpu_options.allow_growth = True
-  # session_config.gpu_options.per_process_gpu_memory_fraction =0.7
-  # config = tf.estimator.RunConfig(model_dir=FLAGS.model_dir, session_config=session_config)
-  session_config = tf.ConfigProto()
-  session_config.gpu_options.allow_growth = True
-  session_config.gpu_options.per_process_gpu_memory_fraction = 0.95
-  config = tf.estimator.RunConfig(model_dir=FLAGS.model_dir, session_config=session_config)
+  config = tf.estimator.RunConfig(model_dir=FLAGS.model_dir)
 
   train_and_eval_dict = model_lib.create_estimator_and_inputs(
       run_config=config,
