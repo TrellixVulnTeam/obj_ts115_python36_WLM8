@@ -10,25 +10,36 @@ from lxml import etree, objectify
 """
 
 # 原始图片的缩放比例
-resize_shape = 0.5
+
+resize_shape = 1.0
+# resize_shape = 0.50
+# resize_shape = 0.33
+# resize_shape = 0.25
+
 # 裁剪的大小
-crop_size = (640, 640)
+# （宽，长 ）
+# crop_size = (640, 640)
+crop_size = (480, 854)
 # 重合的边界
-border = 110
+# border = 110
+border = 250
 # boxes重合IOU阈值
 box_iou = 0.85
+# box_iou = 1.0
 # 是否保留没有目标的裁剪框
-saved_only_boxes = True
+# saved_only_boxes = True
+saved_only_boxes = False
 # 测试数据集的比例
-test_rate = 0.1
+# test_rate = 0.1
+test_rate = 0
 
 # 原始img文件夹路径
-img_path = "/media/db/WLZ_Secret_db/test/src1"
+img_path = "/media/db/B47A-50F6/20201118孔/bianhuan/img"
 # 原始xml文件夹路径
-xml_path = "/media/db/WLZ_Secret_db/正在处理的标签/20200918/两批合一批螺钉/xml"
+xml_path = "/media/db/B47A-50F6/20201118孔/bianhuan/xml"
 
 # 保存裁剪img和xml文件的根路径
-crop_root = "/media/db/WLZ_Secret_db/test/crop_result1"
+crop_root = "/media/db/B47A-50F6/20201118孔/bianhuan/croped"
 # 保存新生成的训练img文件夹路径
 train_path_img = os.path.join(crop_root, "train_img")
 # 保存新生成的训练img文件夹路径
@@ -131,9 +142,11 @@ class CropImageLabel():
     def crop_img(self, box_iou, result_path_img, result_path_xml, ):
         # 裁剪图片
         h, w = self.img.shape[:2]
-        h_num = math.floor((h - self.crop_size[1]) / (self.crop_size[1] - self.border)) + 2
+        h_num = math.floor((h - self.crop_size[0]) / (self.crop_size[0] - self.border)) + 2
         w_num = math.floor((w - self.crop_size[1]) / (self.crop_size[1] - self.border)) + 2
 
+        a1 = h_num * self.crop_size[0] + self.border - h
+        a2 = w_num * self.crop_size[1] + self.border - w
         img = cv2.copyMakeBorder(self.img, 0, h_num * self.crop_size[0] + self.border - h, 0,
                                  w_num * self.crop_size[1] + self.border - w, cv2.BORDER_CONSTANT,
                                  value=[255, 255, 255])
@@ -155,11 +168,15 @@ class CropImageLabel():
                     y_max = w
 
                 img_result = img[x_min:x_max, y_min:y_max]
+                # img_result_path = os.path.join(result_path_img,
+                #                                self.img_path.split('/')[-1].split('.')[0] + "_{}".format(
+                #                                    str(x_l) + "_" + str(y_l)) + ".jpg")
                 img_result_path = os.path.join(result_path_img,
-                                               self.img_path.split('/')[-1].split('.')[0] + "_{}".format(
+                                               self.img_path.split('/')[-1].split('.')[0]+"_{}".format(str(self.resize_shape).replace(".","__"))+ "_{}".format(
                                                    str(x_l) + "_" + str(y_l)) + ".jpg")
-                cv2.imwrite(img_result_path, img_result)
-                break
+
+                # cv2.imwrite(img_result_path, img_result)
+                # break
                 # print("img: {} has saved!".format(img_result_path))
 
                 # 生成新的ｘｍｌd
@@ -179,8 +196,8 @@ class CropImageLabel():
                         # 如果裁剪到box的边缘,则box的坐标取边界值
                         py1 = max(py1, 0)
                         px1 = max(px1, 0)
-                        py2 = min(py2, self.crop_size[0])
-                        px2 = min(px2, self.crop_size[1])
+                        py2 = min(py2, self.crop_size[1])
+                        px2 = min(px2, self.crop_size[0])
 
                         # 原始box的面积
                         area_large = abs(point[0] - point[2]) * abs(point[1] - point[3])
@@ -220,9 +237,11 @@ if __name__ == "__main__":
             result_path_img=train_path_img
             result_path_xml=train_path_xml
 
-            if not index%int(1/test_rate):
-                result_path_img = test_path_img
-                result_path_xml = test_path_xml
+            if test_rate!=0:
+                if not index%int(1/test_rate):
+                    # print("tttttttttttttttttttttttttttttttttttt")
+                    result_path_img = test_path_img
+                    result_path_xml = test_path_xml
 
             crop_image_label = CropImageLabel(img_path_one, xml_path_one, crop_size,
                                               border, resize_shape)

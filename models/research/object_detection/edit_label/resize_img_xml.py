@@ -9,16 +9,18 @@ from lxml import etree, objectify
 """
 
 # 原始图片的缩放比例
-resize_pix = (640,480)
+# resize_pix = (2592,1728)
+# resize_pix = (1728,1152)
+resize_pix = (1296,864)
 # 原始img文件夹路径
-img_path = "/media/db/WLZ_Secret_db/备份数据集(非常重要)/5720项目图片及标签/飞机螺钉/20200828/口盖/img"
+img_path = "/media/db/B47A-50F6/20201118孔/bianhuan/img"
 # 原始xml path
-xml_path = "/media/db/WLZ_Secret_db/备份数据集(非常重要)/5720项目图片及标签/飞机螺钉/20200828/口盖/xml"
+xml_path = "/media/db/B47A-50F6/20201118孔/bianhuan/xml"
 
 # 保存新生成的img文件夹路径
-result_path_img = "/media/db/WLZ_Secret_db/备份数据集(非常重要)/5720项目图片及标签/飞机螺钉/20200828/口盖//resized_img"
+result_path_img = "/media/db/B47A-50F6/20201118孔/bianhuan/resized_img"
 # 保存新生成的xml文件夹路径
-result_path_xml = "/media/db/WLZ_Secret_db/备份数据集(非常重要)/5720项目图片及标签/飞机螺钉/20200828/口盖/resized_xml"
+result_path_xml = "/media/db/B47A-50F6/20201118孔/bianhuan/resized_xml"
 
 
 class CropImageLabel():

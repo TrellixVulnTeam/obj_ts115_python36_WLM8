@@ -154,10 +154,10 @@ def get_img_list(img_path):
             img_list.append(str(file).split(".")[-2])
     return img_list
 
-output_tf_dir = "/media/db/WLZ_Secret_db/备份数据集(非常重要)/5720项目图片及标签/飞机螺钉/20200828/口盖/pascal_val_train.record"
-lable_dir = "/media/db/WLZ_Secret_db/备份数据集(非常重要)/5720项目图片及标签/飞机螺钉/20200828/口盖/pascal_label_map.pbtxt"
-image_dir = "/media/db/WLZ_Secret_db/备份数据集(非常重要)/5720项目图片及标签/飞机螺钉/20200828/口盖/resized_img"
-xml_dir = "/media/db/WLZ_Secret_db/备份数据集(非常重要)/5720项目图片及标签/飞机螺钉/20200828/口盖/resized_xml"
+output_tf_dir = "/media/db/B47A-50F6/20201118孔/bianhuan/croped/pascal_val_train.record"
+lable_dir = "/media/db/B47A-50F6/20201118孔/bianhuan/croped/pascal_label_map.pbtxt"
+image_dir = "/media/db/B47A-50F6/20201118孔/bianhuan/croped/train_img"
+xml_dir = "/media/db/B47A-50F6/20201118孔/bianhuan/croped/train_xml"
 
 def create_tf():
     writer = tf.python_io.TFRecordWriter(output_tf_dir)
