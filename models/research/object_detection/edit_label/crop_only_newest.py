@@ -11,10 +11,10 @@ from lxml import etree, objectify
 
 # 原始图片的缩放比例
 
-resize_shape = 1.0
+# resize_shape = 1.0
 # resize_shape = 0.50
 # resize_shape = 0.33
-# resize_shape = 0.25
+resize_shape = 0.25
 
 # 裁剪的大小
 # （宽，长 ）
@@ -110,8 +110,8 @@ class CropImageLabel():
                 E.database('Unknown'),
             ),
             E.size(
-                E.width(self.crop_size[0]),
-                E.height(self.crop_size[1]),
+                E.width(self.crop_size[1]),
+                E.height(self.crop_size[0]),
                 E.depth(3)
             ),
             E.segmented(0),

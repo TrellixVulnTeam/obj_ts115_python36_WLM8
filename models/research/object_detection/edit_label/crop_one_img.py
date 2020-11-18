@@ -2,9 +2,9 @@ import os
 
 import cv2
 
-src_img_dir = "/media/db/WLZ_Secret_db/备份数据集(非常重要)/路航图片/测试点/Camera"
-result_img_dir = "/media/db/WLZ_Secret_db/备份数据集(非常重要)/路航图片/测试点/4:3"
-crop_size = (2160, 2890)
+src_img_dir = "/home/db/图片/刚棒入水实验/water_steal"
+result_img_dir = "/home/db/图片/刚棒入水实验/reshape_img"
+crop_size = (2250, 4000)
 
 def crop_img(img):
     img_shape = img.shape
