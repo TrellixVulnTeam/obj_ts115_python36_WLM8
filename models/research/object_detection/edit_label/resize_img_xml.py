@@ -11,16 +11,16 @@ from lxml import etree, objectify
 # 原始图片的缩放比例
 # resize_pix = (2592,1728)
 # resize_pix = (1728,1152)
-resize_pix = (1296,864)
+resize_pix = (854,480)
 # 原始img文件夹路径
-img_path = "/media/db/B47A-50F6/20201118孔/bianhuan/img"
+img_path = "/home/db/图片/刚棒入水实验/img"
 # 原始xml path
-xml_path = "/media/db/B47A-50F6/20201118孔/bianhuan/xml"
+xml_path = "/home/db/图片/刚棒入水实验/xml"
 
 # 保存新生成的img文件夹路径
-result_path_img = "/media/db/B47A-50F6/20201118孔/bianhuan/resized_img"
+result_path_img = "/home/db/图片/刚棒入水实验/img_resized"
 # 保存新生成的xml文件夹路径
-result_path_xml = "/media/db/B47A-50F6/20201118孔/bianhuan/resized_xml"
+result_path_xml = "/home/db/图片/刚棒入水实验/xml_resized"
 
 
 class CropImageLabel():

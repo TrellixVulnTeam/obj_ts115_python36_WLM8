@@ -12,7 +12,7 @@ def crop_img(img):
     img_w_start = int((img_shape[1] - crop_size[1]) / 2)
     img_result = img[img_h_start:img_h_start + crop_size[0], img_w_start:img_w_start + crop_size[1], :]
     # cv2.imshow("sdfa",img_result)
-    # print(img_result.shape)
+    print(img_result.shape)
     # cv2.waitKey(0)
     return img_result
 
