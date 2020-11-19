@@ -2,17 +2,17 @@ import os
 import xml.etree.cElementTree as ET
 
 # 原始ｘｍｌ文件目录
-old_dir_path = '/home/db/图片/temp/train_xml_d'
+old_dir_path = '/home/db/图片/刚棒入水实验/xml_final'
 # 生成新ｘｍｌ文件目录
-new_dir_path = '/home/db/图片/temp/train_xml_d'
+new_dir_path = '/home/db/图片/刚棒入水实验/xml_final'
 
 #添加需要删除的标记名称
-Label_Class = ["t","k"]
+Label_Class = ["n"]
 # Label_Class = ["p"]
 
 #添加需要修改的标签名称｛原始标签：修改后标签｝
 Edit_Label ={}
-# Edit_Label ={"h":"w","t":"p"}
+Edit_Label ={"nowater":"n","inwater":"i"}
 
 class EditXmlClass:
     def __init__(self,old_dir_path,new_dir_path):
@@ -31,7 +31,7 @@ class EditXmlClass:
                 for name in child.iter('name'):
                     if name.text in label_class:
                         root.remove(child)
-                        print("yes {}".format(name))
+                        print("yes {}".format(child.text))
             tree.write(os.path.join(self.new_dir_path, axml))
             print("删除第{}张图片的多余标签".format(index+1))
 

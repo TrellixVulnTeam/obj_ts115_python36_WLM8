@@ -13,14 +13,14 @@ from lxml import etree, objectify
 # resize_pix = (1728,1152)
 resize_pix = (854,480)
 # 原始img文件夹路径
-img_path = "/home/db/图片/刚棒入水实验/img"
+img_path = "/home/db/图片/保险丝正反图片/resized_img"
 # 原始xml path
-xml_path = "/home/db/图片/刚棒入水实验/xml"
+xml_path = "/home/db/图片/保险丝正反图片/resized_xml"
 
 # 保存新生成的img文件夹路径
-result_path_img = "/home/db/图片/刚棒入水实验/img_resized"
+result_path_img = "/home/db/图片/保险丝正反图片/reshape_img"
 # 保存新生成的xml文件夹路径
-result_path_xml = "/home/db/图片/刚棒入水实验/xml_resized"
+result_path_xml = "/home/db/图片/保险丝正反图片/reshape_xml"
 
 
 class CropImageLabel():

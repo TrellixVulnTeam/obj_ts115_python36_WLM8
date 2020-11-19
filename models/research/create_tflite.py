@@ -14,19 +14,19 @@ import os
 
 
 # pipeline_config_path = "/home/sucom/Documents/led_lamp_0610/ssd_mobilenet_v2_mnasfpn_shared_box_predictor_320x320_coco_sync_2020_05_18/pipeline.config"
-pipeline_config_path = "/home/db/桌面/目标检测项目/ts114_py36/20201110_kougai_640*480/ssdlite_mobiledet_cpu_320x320_coco_2020_05_19/pipeline.config"
+pipeline_config_path = "/home/db/桌面/目标检测项目/ts114_py36/20201118_kongdong/ssdlite_mobiledet_cpu_320x320_coco_2020_05_19/pipeline.config"
 
-trained_checkpoint_prefix = "/home/db/桌面/目标检测项目/ts114_py36/20201110_kougai_640*480/model/model.ckpt-91095"
-output_directory = "/home/db/桌面/目标检测项目/ts114_py36/20201110_kougai_640*480/frozen"
+trained_checkpoint_prefix = "/home/db/桌面/目标检测项目/ts114_py36/20201118_kongdong/model/model.ckpt-85524"
+output_directory = "/home/db/桌面/目标检测项目/ts114_py36/20201118_kongdong/frozen"
 add_postprocessing_op=True
 #
 os.system("python object_detection/export_tflite_ssd_graph.py --pipeline_config_path=%s --trained_checkpoint_prefix=%s --output_directory=%s --add_postprocessing_op=%s" % (pipeline_config_path,trained_checkpoint_prefix,output_directory,add_postprocessing_op))
 
 
 # input_shape = "1,512,640,3"
-input_shape = "1,480,640,3"
+input_shape = "1,480,854,3"
 # input_shape = "1,360,480,3"
-output_file='/home/db/桌面/目标检测项目/ts114_py36/20201110_kougai_640*480/frozen/detect_kg.tflite'
+output_file='/home/db/桌面/目标检测项目/ts114_py36/20201118_kongdong/frozen/detect_85524.tflite'
 graph_def_file=output_directory+"/tflite_graph.pb"
 
 

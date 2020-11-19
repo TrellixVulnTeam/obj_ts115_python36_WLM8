@@ -2,8 +2,8 @@ import os
 
 import cv2
 
-src_img_dir = "/home/db/图片/刚棒入水实验/water_steal"
-result_img_dir = "/home/db/图片/刚棒入水实验/reshape_img"
+src_img_dir = "/home/db/图片/保险丝正反图片/src_img"
+result_img_dir = "/home/db/图片/保险丝正反图片/resized_img"
 crop_size = (2250, 4000)
 
 def crop_img(img):

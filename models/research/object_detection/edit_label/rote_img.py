@@ -3,8 +3,8 @@ import os
 import cv2
 import numpy as np
 
-img_dir = "/media/db/B47A-50F6/20201118孔/bianhuan/croped/train_img"
-result_img_dir = "/media/db/B47A-50F6/20201118孔/bianhuan/croped/train_img_roted"
+img_dir = "/home/db/图片/保险丝正反图片/src_img"
+result_img_dir = "/home/db/图片/保险丝正反图片/rot_img"
 
 class SetImg():
     def __init__(self,img):
@@ -18,8 +18,12 @@ if __name__=="__main__":
         for index,file in enumerate(files):
             img_path = os.path.join(img_dir,file)
             img = cv2.imread(img_path)
-            set_img = SetImg(img)
-            result_img = set_img.rote_90()
+            if img.shape[0]>img.shape[1]:
+            # print(img.shape)
+                set_img = SetImg(img)
+                result_img = set_img.rote_90()
+            else:
+                result_img = img
             result_img_path = os.path.join(result_img_dir,file)
             cv2.imwrite(result_img_path,result_img)
             print("success {}!".format(index))
