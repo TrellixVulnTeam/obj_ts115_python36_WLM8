@@ -1,16 +1,20 @@
 import os
 
-INPUT_TYPE = "image_tensor"
-PIPELINE_CONFIG_PATH = "/media/db/WLZ_Secret_db/训练的模型文件和记录/5720/放飞/飞机头部/ssdlite_mobiledet_cpu_320x320_coco_2020_05_19/pipeline.config"
-TRAINED_CKPT_PREFIX = "/media/db/WLZ_Secret_db/训练的模型文件和记录/5720/放飞/飞机头部/model/model.ckpt-384143"
-EXPORT_DIR = "/media/db/WLZ_Secret_db/训练的模型文件和记录/5720/放飞/飞机头部/export"
+src_dir = "/media/db/WLZ_Secret_db/训练的模型文件和记录/5720/通电/座舱"
+checkpoint_num = "model/model.ckpt-271352"
+
+PIPELINE_CONFIG_PATH = os.path.join(src_dir,"ssdlite_mobiledet_cpu_320x320_coco_2020_05_19/pipeline.config")
+TRAINED_CKPT_PREFIX = os.path.join(src_dir,checkpoint_num)
+EXPORT_DIR = os.path.join(src_dir,"export")
 input_shape = "1,480,640,3"
+
+INPUT_TYPE = "image_tensor"
+max_detections = 200
 
 
 output_file = os.path.join(EXPORT_DIR, TRAINED_CKPT_PREFIX.split("-")[-1] + ".tflite")
 graph_def_file = os.path.join(EXPORT_DIR, "tflite_graph.pb")
 add_postprocessing_op = True
-max_detections = 200
 
 os.system(
     "python object_detection/export_tflite_ssd_graph.py --max_detections=%s --pipeline_config_path=%s --trained_checkpoint_prefix=%s --output_directory=%s --add_postprocessing_op=%s" % (
