@@ -1,9 +1,9 @@
 import os
 
 INPUT_TYPE="image_tensor"
-PIPELINE_CONFIG_PATH="/home/db/桌面/目标检测项目/ts114_py36/20201110_kougai_640*480/ssdlite_mobiledet_cpu_320x320_coco_2020_05_19/pipeline.config"
-TRAINED_CKPT_PREFIX="/home/db/桌面/目标检测项目/ts114_py36/20201110_kougai_640*480/model/model.ckpt-91095"
-EXPORT_DIR="/home/db/桌面/目标检测项目/ts114_py36/20201110_kougai_640*480/model/frozen"
+PIPELINE_CONFIG_PATH="/home/db/桌面/目标检测项目/ts114_py36/lsd_all_test_20201110/ssdlite_mobiledet_cpu_320x320_coco_2020_05_19/pipeline.config"
+TRAINED_CKPT_PREFIX="/home/db/桌面/目标检测项目/ts114_py36/lsd_all_test_20201110/model/model.ckpt-405238"
+EXPORT_DIR="/home/db/桌面/目标检测项目/ts114_py36/lsd_all_test_20201110/model/frozen"
 
 
 

@@ -9,23 +9,23 @@ from lxml import etree, objectify
 """
 
 # 原始图片的缩放比例
-# resize_pix = (2592,1728)
+resize_pix = (2080,1560)
 # resize_pix = (1728,1152)
-resize_pix = (854,480)
+# resize_pix = (640,480)
 # 原始img文件夹路径
-img_path = "/home/db/图片/保险丝正反图片/resized_img"
+img_path = "/media/db/WLZ_Secret_db/正在处理的标签/成飞孔洞识别/img"
 # 原始xml path
-xml_path = "/home/db/图片/保险丝正反图片/resized_xml"
+xml_path = "/media/db/WLZ_Secret_db/正在处理的标签/成飞孔洞识别/xml"
 
 # 保存新生成的img文件夹路径
-result_path_img = "/home/db/图片/保险丝正反图片/reshape_img"
+result_path_img = "/media/db/WLZ_Secret_db/正在处理的标签/成飞孔洞识别/resized_img"
 # 保存新生成的xml文件夹路径
-result_path_xml = "/home/db/图片/保险丝正反图片/reshape_xml"
+result_path_xml = "/media/db/WLZ_Secret_db/正在处理的标签/成飞孔洞识别/resized_xml"
 
 
 class CropImageLabel():
     """
-    把大分辨率的图片裁剪成小分辨率的图片，同时生成对应的标签文件
+
     """
 
     def __init__(self, img_path, xml_path, result_path_img, result_path_xml, resize_pix):

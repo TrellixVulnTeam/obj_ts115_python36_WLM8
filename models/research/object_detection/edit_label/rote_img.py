@@ -3,8 +3,8 @@ import os
 import cv2
 import numpy as np
 
-img_dir = "/home/db/图片/保险丝正反图片/src_img"
-result_img_dir = "/home/db/图片/保险丝正反图片/rot_img"
+img_dir = "/media/db/WLZ_Secret_db/备份数据集(非常重要)/成飞项目图片及标签/孔洞识别/Camera"
+result_img_dir = "/media/db/WLZ_Secret_db/备份数据集(非常重要)/成飞项目图片及标签/孔洞识别/img"
 
 class SetImg():
     def __init__(self,img):
