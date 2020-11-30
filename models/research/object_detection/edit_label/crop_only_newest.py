@@ -14,7 +14,8 @@ from lxml import etree, objectify
 # resize_shape = 1.0
 # resize_shape = 0.50
 # resize_shape = 0.33
-resize_shape = 0.25
+# resize_shape = 0.25
+resize_shape = 0.1
 
 # 裁剪的大小
 # （宽，长 ）
@@ -34,12 +35,12 @@ saved_only_boxes = False
 test_rate = 0
 
 # 原始img文件夹路径
-img_path = "/media/db/B47A-50F6/20201118孔/bianhuan/img"
+img_path = "/media/db/WLZ_Secret_db/正在处理的标签/成飞孔洞识别/img"
 # 原始xml文件夹路径
-xml_path = "/media/db/B47A-50F6/20201118孔/bianhuan/xml"
+xml_path = "/media/db/WLZ_Secret_db/正在处理的标签/成飞孔洞识别/xml"
 
 # 保存裁剪img和xml文件的根路径
-crop_root = "/media/db/B47A-50F6/20201118孔/bianhuan/croped"
+crop_root = "/media/db/WLZ_Secret_db/正在处理的标签/成飞孔洞识别/croped_01"
 # 保存新生成的训练img文件夹路径
 train_path_img = os.path.join(crop_root, "train_img")
 # 保存新生成的训练img文件夹路径

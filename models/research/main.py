@@ -12,11 +12,14 @@ import os
 # SAMPLE_1_OF_N_EVAL_EXAMPLES = 1
 
 
-PIPELINE_CONFIG_PATH = "/home/db/桌面/目标检测项目/ts114_py36/jingshubangwater_20201118/ssdlite_mobiledet_cpu_320x320_coco_2020_05_19/pipeline.config"
+PIPELINE_CONFIG_PATH = "/home/db/桌面/目标检测项目/ts114_py36/kongdong_20201128/ssdlite_mobiledet_cpu_320x320_coco_2020_05_19/pipeline.config"
+# PIPELINE_CONFIG_PATH = "/home/db/桌面/目标检测项目/ts114_py36/lsd_all_test_20201110/ssdlite_mobiledet_cpu_320x320_coco_2020_05_19/pipeline.config"
+# PIPELINE_CONFIG_PATH = "/home/db/桌面/目标检测项目/ts114_py36/20201102_red_s/ssdlite_mobiledet_cpu_320x320_coco_2020_05_19/pipeline.config"
 
-MODEL_DIR = "/home/db/桌面/目标检测项目/ts114_py36/jingshubangwater_20201118/model"
-# MODEL_DIR = "/home/db/桌面/目标检测项目/ts114_py36/lsd_all_test_20201110/model"
-# MODEL_DIR = "/home/sucom/Documents/5720_led_20201023/model"
+
+MODEL_DIR = "/home/db/桌面/目标检测项目/ts114_py36/kongdong_20201128/model"
+# MODEL_DIR = "/home/db/桌面/目标检测项目/ts114_py36/20201102_red_s/model"
+# MODEL_DIR = "/home/db/桌面/目标检测项目/ts114_py36/5720_led_20201023/model"
 
 NUM_TRAIN_STEPS = 400000000
 SAMPLE_1_OF_N_EVAL_EXAMPLES = 1
