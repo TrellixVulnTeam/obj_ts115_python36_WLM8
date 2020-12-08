@@ -11,36 +11,37 @@ from lxml import etree, objectify
 
 # 原始图片的缩放比例
 
-# resize_shape = 1.0
-# resize_shape = 0.50
+resize_shape = 1.0
+# resize_shape = 0.95
 # resize_shape = 0.33
 # resize_shape = 0.25
-resize_shape = 0.1
+# resize_shape = 0.1
 
 # 裁剪的大小
 # （宽，长 ）
-# crop_size = (640, 640)
-crop_size = (480, 854)
+crop_size = (640, 640)
+# crop_size = (480, 854)
 # 重合的边界
+border = 50
 # border = 110
-border = 250
+# border = 250
 # boxes重合IOU阈值
 box_iou = 0.85
 # box_iou = 1.0
 # 是否保留没有目标的裁剪框
-# saved_only_boxes = True
-saved_only_boxes = False
+saved_only_boxes = True
+# saved_only_boxes = False
 # 测试数据集的比例
 # test_rate = 0.1
 test_rate = 0
 
 # 原始img文件夹路径
-img_path = "/media/db/WLZ_Secret_db/正在处理的标签/成飞孔洞识别/img"
+img_path = "/media/db/B47A-50F6/电路板子/20201201/img"
 # 原始xml文件夹路径
-xml_path = "/media/db/WLZ_Secret_db/正在处理的标签/成飞孔洞识别/xml"
+xml_path = "/media/db/B47A-50F6/电路板子/20201201/xml"
 
 # 保存裁剪img和xml文件的根路径
-crop_root = "/media/db/WLZ_Secret_db/正在处理的标签/成飞孔洞识别/croped_01"
+crop_root = "/media/db/B47A-50F6/电路板子/20201201/croped"
 # 保存新生成的训练img文件夹路径
 train_path_img = os.path.join(crop_root, "train_img")
 # 保存新生成的训练img文件夹路径
@@ -143,14 +144,20 @@ class CropImageLabel():
     def crop_img(self, box_iou, result_path_img, result_path_xml, ):
         # 裁剪图片
         h, w = self.img.shape[:2]
-        h_num = math.floor((h - self.crop_size[0]) / (self.crop_size[0] - self.border)) + 2
-        w_num = math.floor((w - self.crop_size[1]) / (self.crop_size[1] - self.border)) + 2
 
-        a1 = h_num * self.crop_size[0] + self.border - h
-        a2 = w_num * self.crop_size[1] + self.border - w
-        img = cv2.copyMakeBorder(self.img, 0, h_num * self.crop_size[0] + self.border - h, 0,
-                                 w_num * self.crop_size[1] + self.border - w, cv2.BORDER_CONSTANT,
+        h_num = math.ceil((h - self.crop_size[0]) / (self.crop_size[0] - self.border)) + 1
+        w_num = math.ceil((w - self.crop_size[1]) / (self.crop_size[1] - self.border)) + 1
+
+        # 需要添加的边界
+        b_h = self.crop_size[0] - ((h-self.crop_size[0])%(self.crop_size[0]-border))-border
+        b_w = self.crop_size[1] - ((w - self.crop_size[1]) % (self.crop_size[1] - border))-border
+
+
+        img = cv2.copyMakeBorder(self.img, 0, b_h, 0,
+                                 b_w, cv2.BORDER_CONSTANT,
                                  value=[255, 255, 255])
+
+        # cv2.imwrite("1234.jpg", img)
 
         h, w = img.shape[:2]
 
@@ -173,7 +180,8 @@ class CropImageLabel():
                 #                                self.img_path.split('/')[-1].split('.')[0] + "_{}".format(
                 #                                    str(x_l) + "_" + str(y_l)) + ".jpg")
                 img_result_path = os.path.join(result_path_img,
-                                               self.img_path.split('/')[-1].split('.')[0]+"_{}".format(str(self.resize_shape).replace(".","__"))+ "_{}".format(
+                                               self.img_path.split('/')[-1].split('.')[0] + "_{}".format(
+                                                   str(self.resize_shape).replace(".", "__")) + "_{}".format(
                                                    str(x_l) + "_" + str(y_l)) + ".jpg")
 
                 # cv2.imwrite(img_result_path, img_result)
@@ -226,8 +234,8 @@ class CropImageLabel():
 
 
 if __name__ == "__main__":
-    for file_path in [crop_root,train_path_img,train_path_xml,test_path_img,test_path_xml]:
-        os.makedirs(file_path,exist_ok=True)
+    for file_path in [crop_root, train_path_img, train_path_xml, test_path_img, test_path_xml]:
+        os.makedirs(file_path, exist_ok=True)
     # 遍历文件夹内的文件，逐个裁剪
     for root, folders, files in os.walk(img_path):
         for index, file in enumerate(files):
@@ -235,17 +243,17 @@ if __name__ == "__main__":
             xml_path_one = os.path.join(xml_path, file.split('/')[-1].split('.')[-2] + ".xml")
             # print(img_path_one)
             # print(xml_path_one)
-            result_path_img=train_path_img
-            result_path_xml=train_path_xml
+            result_path_img = train_path_img
+            result_path_xml = train_path_xml
 
-            if test_rate!=0:
-                if not index%int(1/test_rate):
+            if test_rate != 0:
+                if not index % int(1 / test_rate):
                     # print("tttttttttttttttttttttttttttttttttttt")
                     result_path_img = test_path_img
                     result_path_xml = test_path_xml
 
             crop_image_label = CropImageLabel(img_path_one, xml_path_one, crop_size,
                                               border, resize_shape)
-            crop_image_label.crop_img(box_iou,result_path_img,result_path_xml)
+            crop_image_label.crop_img(box_iou, result_path_img, result_path_xml)
             index += 1
             print("第{}张图片裁剪完成".format(index))
