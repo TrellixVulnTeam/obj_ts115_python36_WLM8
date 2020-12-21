@@ -154,10 +154,10 @@ def get_img_list(img_path):
             img_list.append(str(file).split(".")[-2])
     return img_list
 
-output_tf_dir = "/home/sucom/Documents/ocr/pascal_val_train.record"
-lable_dir = "/home/sucom/Documents/ocr/pascal_label_map.pbtxt"
-image_dir = "/home/sucom/Desktop/creat_font_dataset/output_0_h/train/img"
-xml_dir = "/home/sucom/Desktop/creat_font_dataset/output_0_h/train/xml"
+output_tf_dir = "/media/db/B47A-50F6/电路板子/20201201/croped/pascal_val_train.record"
+lable_dir = "/media/db/B47A-50F6/电路板子/20201201/croped/pascal_label_map.pbtxt"
+image_dir = "/media/db/B47A-50F6/电路板子/20201201/croped/train_img"
+xml_dir = "/media/db/B47A-50F6/电路板子/20201201/croped/train_xml"
 
 def create_tf():
     writer = tf.python_io.TFRecordWriter(output_tf_dir)

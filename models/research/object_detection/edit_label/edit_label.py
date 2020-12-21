@@ -2,17 +2,17 @@ import os
 import xml.etree.cElementTree as ET
 
 # 原始ｘｍｌ文件目录
-old_dir_path = '/home/db/图片/刚棒入水实验/xml_final'
+old_dir_path = '/media/db/B47A-50F6/电路板子/20201201/croped/train_xml'
 # 生成新ｘｍｌ文件目录
-new_dir_path = '/home/db/图片/刚棒入水实验/xml_final'
+new_dir_path = '/media/db/B47A-50F6/电路板子/20201201/croped/train_xml'
 
 #添加需要删除的标记名称
-Label_Class = ["n"]
+Label_Class = ["l"]
 # Label_Class = ["p"]
 
 #添加需要修改的标签名称｛原始标签：修改后标签｝
 Edit_Label ={}
-Edit_Label ={"nowater":"n","inwater":"i"}
+# Edit_Label ={"nowater":"n","inwater":"i"}
 
 class EditXmlClass:
     def __init__(self,old_dir_path,new_dir_path):

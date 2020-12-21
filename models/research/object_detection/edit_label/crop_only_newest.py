@@ -11,8 +11,8 @@ from lxml import etree, objectify
 
 # 原始图片的缩放比例
 
-resize_shape = 1.0
-# resize_shape = 0.95
+# resize_shape = 1.0
+resize_shape = 0.8
 # resize_shape = 0.33
 # resize_shape = 0.25
 # resize_shape = 0.1
@@ -20,13 +20,15 @@ resize_shape = 1.0
 # 裁剪的大小
 # （宽，长 ）
 crop_size = (640, 640)
+# crop_size = (2000, 2000)
 # crop_size = (480, 854)
 # 重合的边界
-border = 50
+# border = 50
 # border = 110
-# border = 250
+border = 40
 # boxes重合IOU阈值
-box_iou = 0.85
+box_iou = 0.0
+# box_iou = 0.85
 # box_iou = 1.0
 # 是否保留没有目标的裁剪框
 saved_only_boxes = True
