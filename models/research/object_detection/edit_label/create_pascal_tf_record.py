@@ -29,15 +29,6 @@ import hashlib
 import io
 import logging
 import os
-
-import PIL.Image
-import tensorflow as tf
-from lxml import etree
-
-from object_detection.utils import dataset_util
-from object_detection.utils import label_map_util
-
-
 # flags = tf.app.flags
 # flags.DEFINE_string('data_dir', '', 'Root directory to raw PASCAL VOC dataset.')
 # flags.DEFINE_string('img_path', 'train', 'Convert training set, validation set or '
@@ -52,7 +43,26 @@ from object_detection.utils import label_map_util
 # FLAGS = flags.FLAGS
 #
 # SETS = ['train', 'val', 'trainval', 'test']
+from io import BytesIO
 
+import PIL.Image
+import tensorflow as tf
+from lxml import etree
+
+from object_detection.utils import dataset_util
+from object_detection.utils import label_map_util
+
+
+def PIL_compress(im):
+    '''PIL图像压缩
+
+    :param im: PIL图像，PIL.Image
+    :return: bytes图像
+    '''
+    bytesIO = BytesIO()
+    im = im.convert('RGB')
+    im.save(bytesIO, format='JPEG', quality=75)  # 图像质量默认为75
+    return bytesIO.getvalue()
 
 def dict_to_tf_example(data,
                        dataset_directory,
@@ -88,7 +98,8 @@ def dict_to_tf_example(data,
     encoded_jpg_io = io.BytesIO(encoded_jpg)
     image = PIL.Image.open(encoded_jpg_io)
     if image.format != 'JPEG':
-        raise ValueError('Image format not JPEG')
+        image = PIL_compress(image)
+        # raise ValueError('Image format not JPEG')
     key = hashlib.sha256(encoded_jpg).hexdigest()
 
     width = int(data['size']['width'])
@@ -151,13 +162,15 @@ def get_img_list(img_path):
         # print(files)  # 当前路径下所有非目录子文件
         for file in files:
             # print(file)
-            img_list.append(str(file).split(".")[-2])
+            one_img_path = str(file)[0:-4]
+            img_list.append(one_img_path)
+            # img_list.append(str(file).split(".")[-2])
     return img_list
 
-output_tf_dir = "/media/db/B47A-50F6/电路板子/20201201/croped/pascal_val_train.record"
-lable_dir = "/media/db/B47A-50F6/电路板子/20201201/croped/pascal_label_map.pbtxt"
-image_dir = "/media/db/B47A-50F6/电路板子/20201201/croped/train_img"
-xml_dir = "/media/db/B47A-50F6/电路板子/20201201/croped/train_xml"
+output_tf_dir = "/home/db/图片/line_rgb/pascal_val_test.record"
+lable_dir = "/home/db/图片/line_rgb/pascal_label_map.pbtxt"
+image_dir = "/home/db/图片/line_rgb/img_test"
+xml_dir = "/home/db/图片/line_rgb/xml_test"
 
 def create_tf():
     writer = tf.python_io.TFRecordWriter(output_tf_dir)
