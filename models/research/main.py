@@ -6,7 +6,7 @@ PIPELINE_CONFIG_PATH = "/media/db/hdd/obj_project/tensorflow115/line_color/ssdli
 # PIPELINE_CONFIG_PATH = "/home/db/桌面/目标检测项目/ts114_py36/20201102_red_s/ssdlite_mobiledet_cpu_320x320_coco_2020_05_19/pipeline.config"
 
 
-MODEL_DIR = "/media/db/hdd/obj_project/tensorflow115/line_color/model"
+MODEL_DIR = "/media/db/hdd/obj_project/tensorflow115/line_color/model1"
 # MODEL_DIR = "/home/db/桌面/目标检测项目/ts114_py36/20201102_red_s/model"
 # MODEL_DIR = "/home/db/桌面/目标检测项目/ts114_py36/5720_led_20201023/model"
 

@@ -23,7 +23,7 @@ while True:
 
     if input == ord('p'):
         index +=1
-        img_file_path = os.path.join(img_save_dir,str(time.time())+".png")
+        img_file_path = os.path.join(img_save_dir,str(time.time())+".jpg")
         cv2.imwrite(img_file_path,frame)
         print("第{}张图片拍摄完成，保存到{}".format(index,img_file_path))
         cv2.imshow("capture", frame)
