@@ -1,7 +1,7 @@
 import os
 
-src_dir = "/media/db/hdd/obj_project/tensorflow115/202010118_luosi_fangxiang"
-checkpoint_num = "model/model.ckpt-64916"
+src_dir = "/media/db/hdd/obj_project/tensorflow115/20201019_xingpian_fangxiang"
+checkpoint_num = "model/model.ckpt-134204"
 
 PIPELINE_CONFIG_PATH = os.path.join(src_dir, "ssdlite_mobiledet_cpu_320x320_coco_2020_05_19/pipeline.config")
 TRAINED_CKPT_PREFIX = os.path.join(src_dir, checkpoint_num)
