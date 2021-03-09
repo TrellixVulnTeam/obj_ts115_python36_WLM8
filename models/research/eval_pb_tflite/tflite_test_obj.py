@@ -2,12 +2,35 @@ import cv2
 import numpy as np
 import tensorflow as tf
 
-label_dict = {'1': 'lsd', }
+# label_dict = {'1': 'lsd', }
+label_dict = {'1': '1',
+              '2': '2',
+              '3': '3',
+              '4': '4',
+              '5': '5',
+              '6': '6',
+              '7': '7',
+              '8': '8',
+              '9': '1',
+              '10': 's',
+              '11': '2l',
+              '12': '2s',
+              '13': '1b',
+              '14': '2b',
+              '15': '3b',
+              '16': '4b',
+              '17': '4c',
+              '18': '4d',
+              '19': '5b',
+              '20': '6b',
+              '21': '78',
+              '22': '0'
+              }
 img_shape = (640, 480)
 camera_id = 0
-resize_shape = (480, 480)
-tflite_path = "/home/sucom/Documents/lsd_480_20201020/frozen/detect_lsd.tflite"
-score = 0.65
+resize_shape = (640, 480)
+tflite_path = "/home/db/图片/81969.tflite"
+score = 0.5
 
 
 # label_dict = {'1':'k','2':'y'}
