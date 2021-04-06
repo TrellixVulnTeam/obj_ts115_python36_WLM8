@@ -1,15 +1,14 @@
 import os
 
-src_dir = "/media/db/hdd/obj_project/tensorflow115/20201019_xingpian_fangxiang"
-checkpoint_num = "model/model.ckpt-134204"
+src_dir = "/media/db/hdd1/obj_project/tensorflow115/20210310_heihuoyao/"
+checkpoint_num = "model/model.ckpt-201061"
 
 PIPELINE_CONFIG_PATH = os.path.join(src_dir, "ssdlite_mobiledet_cpu_320x320_coco_2020_05_19/pipeline.config")
 TRAINED_CKPT_PREFIX = os.path.join(src_dir, checkpoint_num)
 EXPORT_DIR = os.path.join(src_dir, "export")
-input_shape = "1,480,640,3"
+input_shape = "1,480,480,3"
 # input_shape = "1,480,854,3"
 # input_shape = "1,640,640,3"
-
 
 INPUT_TYPE = "image_tensor"
 max_detections = 200
