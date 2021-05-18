@@ -20,9 +20,9 @@ img_path = "/media/db/WLZ_Secret_db/171_after_7/img"
 xml_path = "/media/db/WLZ_Secret_db/171_after_7/xml"
 
 # 保存新生成的img文件夹路径
-result_path_img = "/media/db/WLZ_Secret_db/171_after_7/resized_img"
+result_path_img = "/media/db/WLZ_Secret_db/171_after_7/iimg"
 # 保存新生成的xml文件夹路径
-result_path_xml = "/media/db/WLZ_Secret_db/171_after_7/resized_xml"
+result_path_xml = "/media/db/WLZ_Secret_db/171_after_7/xxml"
 
 
 class ResizeImageLabel():
@@ -136,9 +136,9 @@ if __name__ == "__main__":
             img_path_one = os.path.join(root, file)
             xml_path_one = os.path.join(xml_path, file.split('/')[-1].split('.')[-2] + ".xml")
             if os.path.exists(xml_path_one):
-                # crop_image_label = ResizeImageLabel(img_path_one, xml_path_one, result_path_img, result_path_xml,resize_pix )
-                # crop_image_label.resize_img()
-                # index += 1
+                crop_image_label = ResizeImageLabel(img_path_one, xml_path_one, result_path_img, result_path_xml,resize_pix )
+                crop_image_label.resize_img()
+                index += 1
                 print("第{}张图片缩放完成".format(index))
             if is_delete and not os.path.exists(xml_path_one):
                 os.remove(img_path_one)

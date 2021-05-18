@@ -1,10 +1,10 @@
 import os
 import shutil
 
-train_path = "/home/m/Documents/train"
-train_xml_path = "/home/m/Documents/train_xml"
-test_path = "/home/m/Documents/test"
-test_xml_path = "/home/m/Documents/test_xml"
+train_path = "/media/db/WLZ_Secret_db/171_after_7/img_train"
+train_xml_path = "/media/db/WLZ_Secret_db/171_after_7/xml_train"
+test_path = "/media/db/WLZ_Secret_db/171_after_7/img_test"
+test_xml_path = "/media/db/WLZ_Secret_db/171_after_7/xml_test"
 proportion = 10
 
 

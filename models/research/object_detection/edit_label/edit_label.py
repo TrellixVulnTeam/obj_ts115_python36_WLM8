@@ -51,6 +51,8 @@ class EditXmlClass:
             print("修改第{}张图片的多余标签".format(index+1))
 
 
+
+
 if __name__=="__main__":
     edc = EditXmlClass(old_dir_path,new_dir_path)
     edc.delete_lable(Label_Class)

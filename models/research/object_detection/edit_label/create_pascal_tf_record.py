@@ -167,10 +167,10 @@ def get_img_list(img_path):
             # img_list.append(str(file).split(".")[-2])
     return img_list
 
-output_tf_dir = "/media/db/WLZ_Secret_db/正在处理的标签/保定/pascal_val_train.record"
-lable_dir = "/media/db/WLZ_Secret_db/正在处理的标签/保定/pascal_label_map.pbtxt"
-image_dir = "/media/db/WLZ_Secret_db/正在处理的标签/保定/img_train"
-xml_dir = "/media/db/WLZ_Secret_db/正在处理的标签/保定/xml_train"
+output_tf_dir = "/media/db/WLZ_Secret_db/171_after_7/pascal_val_test.record"
+lable_dir = "/media/db/WLZ_Secret_db/171_after_7/pascal_label_map.pbtxt"
+image_dir = "/media/db/WLZ_Secret_db/171_after_7/img_test"
+xml_dir = "/media/db/WLZ_Secret_db/171_after_7/xml_test"
 
 def create_tf():
     writer = tf.python_io.TFRecordWriter(output_tf_dir)
