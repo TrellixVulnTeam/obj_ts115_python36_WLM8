@@ -5,25 +5,27 @@ from lxml import etree, objectify
 
 """
 此脚本的输入为labelimg标记好的xml文件夹、原始图片文件夹
-输出为裁剪后的图片文件夹、新生成的图片文件夹
+输出为缩放后的图片文件夹、新生成的图片文件夹
 """
 
 # 原始图片的缩放比例
 # resize_pix = (2080,1560)
 # resize_pix = (1728,1152)
 resize_pix = (480,480)
+#删除没有标签的原始图片
+is_delete = True
 # 原始img文件夹路径
-img_path = "/media/db/WLZ_Secret_db/杭州_new/img"
+img_path = "/media/db/WLZ_Secret_db/171_after_7/img"
 # 原始xml path
-xml_path = "/media/db/WLZ_Secret_db/杭州_new/xml"
+xml_path = "/media/db/WLZ_Secret_db/171_after_7/xml"
 
 # 保存新生成的img文件夹路径
-result_path_img = "/media/db/WLZ_Secret_db/杭州_new/resized_img"
+result_path_img = "/media/db/WLZ_Secret_db/171_after_7/resized_img"
 # 保存新生成的xml文件夹路径
-result_path_xml = "//media/db/WLZ_Secret_db/杭州_new/resized_xml"
+result_path_xml = "/media/db/WLZ_Secret_db/171_after_7/resized_xml"
 
 
-class CropImageLabel():
+class ResizeImageLabel():
     """
 
     """
@@ -105,7 +107,7 @@ class CropImageLabel():
         print("img: {} has saved!".format(img_path))
 
 
-    def crop_img(self):
+    def resize_img(self):
 
         img_result = self.img
         img_result_path = os.path.join(self.result_path_img , self.img_path.split('/')[-1])
@@ -133,9 +135,10 @@ if __name__ == "__main__":
         for file in files:
             img_path_one = os.path.join(root, file)
             xml_path_one = os.path.join(xml_path, file.split('/')[-1].split('.')[-2] + ".xml")
-            # print(img_path_one)
-            # print(xml_path_one)
-            crop_image_label = CropImageLabel(img_path_one, xml_path_one, result_path_img, result_path_xml,resize_pix )
-            crop_image_label.crop_img()
-            index += 1
-            print("第{}张图片缩放完成".format(index))
+            if os.path.exists(xml_path_one):
+                # crop_image_label = ResizeImageLabel(img_path_one, xml_path_one, result_path_img, result_path_xml,resize_pix )
+                # crop_image_label.resize_img()
+                # index += 1
+                print("第{}张图片缩放完成".format(index))
+            if is_delete and not os.path.exists(xml_path_one):
+                os.remove(img_path_one)
