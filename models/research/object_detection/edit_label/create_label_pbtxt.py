@@ -8,8 +8,8 @@ from lxml import etree
 """
 
 # xml path
-xml_path = "/media/db/WLZ_Secret_db/171_after_7/xxml"
-label_txt_path = "/media/db/WLZ_Secret_db/171_after_7/pascal_label_map.pbtxt"
+xml_path = "/media/db/WLZ_Secret_db/陆航完成的标签/171_after/6_11_12_13_14_xml"
+label_txt_path = "/media/db/WLZ_Secret_db/陆航完成的标签/171_after/pascal_label_map.pbtxt"
 
 
 def get_points(xml_path):
@@ -39,9 +39,11 @@ if __name__ == "__main__":
             for label_one in label_one_list:
                 if label_one not in lable_list and label_one != []:
                     lable_list.append(label_one)
+
     print(lable_list)
 
     with open(label_txt_path,'w') as f:
+        label_list = sorted(lable_list)
         for index,x in enumerate(lable_list):
             str_label ="item {\n"+"id: {}\n".format(index+1)+"name: '{}'\n".format(x)+"}\n"
             f.write(str_label)
