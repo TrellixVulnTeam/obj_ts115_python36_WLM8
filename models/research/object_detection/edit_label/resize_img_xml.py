@@ -11,18 +11,18 @@ from lxml import etree, objectify
 # 原始图片的缩放比例
 # resize_pix = (2080,1560)
 # resize_pix = (1728,1152)
-resize_pix = (480,480)
+resize_pix = (640,480)
 #删除没有标签的原始图片
 is_delete = True
 # 原始img文件夹路径
-img_path = "/media/db/WLZ_Secret_db/171_after_7/img"
+img_path = "/home/db/图片/ld/img"
 # 原始xml path
-xml_path = "/media/db/WLZ_Secret_db/171_after_7/xml"
+xml_path = "/home/db/图片/ld/xml"
 
 # 保存新生成的img文件夹路径
-result_path_img = "/media/db/WLZ_Secret_db/171_after_7/iimg"
+result_path_img = "/home/db/图片/ld/img_train"
 # 保存新生成的xml文件夹路径
-result_path_xml = "/media/db/WLZ_Secret_db/171_after_7/xxml"
+result_path_xml = "/home/db/图片/ld/xml_train"
 
 
 class ResizeImageLabel():

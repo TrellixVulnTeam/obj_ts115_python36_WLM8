@@ -2,9 +2,9 @@ import os
 
 import cv2
 
-src_img_dir = "/home/db/图片/保险丝正反图片/src_img"
-result_img_dir = "/home/db/图片/保险丝正反图片/resized_img"
-crop_size = (2250, 4000)
+src_img_dir = "/media/db/WLZ_Secret_db/备份数据集(非常重要)/5720/5720座椅与黑火药/5720座椅/20210602/img2"
+result_img_dir = "/media/db/WLZ_Secret_db/备份数据集(非常重要)/5720/5720座椅与黑火药/5720座椅/20210602/img3"
+crop_size = (2160, 2880)
 
 def crop_img(img):
     img_shape = img.shape

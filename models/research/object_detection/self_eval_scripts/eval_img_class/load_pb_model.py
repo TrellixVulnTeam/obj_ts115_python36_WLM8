@@ -232,7 +232,7 @@ class LoadPbModel():
         else:
             return False
 
-    def draw_boxes(self, point_list, img):
+    def draw_boxes(self, point_list, img, label_dict={}):
         # point_list = [[[1],[1],[1]],
         #               [[2],[2]],
         #               [3],
@@ -245,13 +245,17 @@ class LoadPbModel():
             # 绘制最终拼接的检测结果
             cv2.rectangle(img, (int(last_point[0] * img.shape[1]), int(last_point[1] * img.shape[0])),
                           (int(last_point[2] * img.shape[1]), int(last_point[3] * img.shape[0])),
-                          (0, 255, 0), 1, 8)
-            cv2.putText(img, str(last_point[4]),
+                          (0, 255, 0), 4, 8)
+            if label_dict == {}:
+                lable_one = last_point[4]
+            if label_dict != {}:
+                lable_one = label_dict[int(last_point[4])]
+            cv2.putText(img, str(lable_one),
                         (int(last_point[0] * img.shape[1]), int(last_point[1] * img.shape[0])),
-                        cv2.FONT_HERSHEY_SIMPLEX, 0.4, (255, 0, 0), 1)
+                        cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 255, 0), 3)
             cv2.putText(img, str(last_point[5])[:6],
-                        (int(last_point[0] * img.shape[1]), int(last_point[1] * img.shape[0] + 10)),
-                        cv2.FONT_HERSHEY_SIMPLEX, 0.4, (255, 255, 0), 1)
+                        (int(last_point[0] * img.shape[1]), int(last_point[1] * img.shape[0] + 50)),
+                        cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 0, 255), 3)
         return img
 
     def yield_points_from_list(self, point_list):

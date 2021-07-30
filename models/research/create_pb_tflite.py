@@ -1,12 +1,12 @@
 import os
 
-src_dir = "/media/db/hdd2/obj_project/tensorflow115/20210518_171_after_7/"
-checkpoint_num = "model/model.ckpt-432997"
+src_dir = "/media/db/hdd2/obj_project/tensorflow115/LH训练完成模型检查点/20210617_171_8/"
+checkpoint_num = "model/model.ckpt-267253"
 
 PIPELINE_CONFIG_PATH = os.path.join(src_dir, "ssdlite_mobiledet_cpu_320x320_coco_2020_05_19/pipeline.config")
 TRAINED_CKPT_PREFIX = os.path.join(src_dir, checkpoint_num)
 EXPORT_DIR = os.path.join(src_dir, "export")
-input_shape = "1,480,480,3"
+input_shape = "1,480,640,3"
 # input_shape = "1,480,854,3"
 # input_shape = "1,640,640,3"
 

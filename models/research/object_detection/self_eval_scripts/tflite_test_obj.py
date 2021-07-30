@@ -31,33 +31,39 @@ import tensorflow as tf
 # resize_shape = (640, 480)
 # tflite_path = "/home/db/图片/81969.tflite"
 # score = 0.5
-label_dict = {'1': '2',
-              '2': '3',
-              '3': '4',
-              '4': '5',
-              '5': '6',
-              '6': '7',
-              '7': 's0',
-              '8': 's1',
-              '9': 's2',
-              '10': 's3',
-              '11': 's4',
-              '12': '2s',
-              '13': '1b',
-              '14': '2b',
-              '15': '3b',
-              '16': '4b',
-              '17': '4c',
-              '18': '4d',
-              '19': '5b',
-              '20': '6b',
-              '21': '78',
-              '22': '0'
+# label_dict = {'1': '2',
+#               '2': '3',
+#               '3': '4',
+#               '4': '5',
+#               '5': '6',
+#               '6': '7',
+#               '7': 's0',
+#               '8': 's1',
+#               '9': 's2',
+#               '10': 's3',
+#               '11': 's4',
+#               '12': '2s',
+#               '13': '1b',
+#               '14': '2b',
+#               '15': '3b',
+#               '16': '4b',
+#               '17': '4c',
+#               '18': '4d',
+#               '19': '5b',
+#               '20': '6b',
+#               '21': '78',
+#               '22': '0'
+#               }
+label_dict = {'1': 'chumo',
+              '2': 'huangdong',
+              '3': 'shoudong',
+              '4': 'xuanzhuan',
+              '5': 'anya',
               }
 img_shape = (640, 480)
 camera_id = 0
-resize_shape = (480, 480)
-tflite_path = "/media/db/hdd2/obj_project/tensorflow115/20210406_hangzhou/export/428467.tflite"
+resize_shape = (640, 480)
+tflite_path = "84991.tflite"
 score = 0.5
 
 
@@ -83,8 +89,8 @@ class GetOneImg():
         self.cap = cv2.VideoCapture(camera_id)
         self.resize_shape = resize_shape
         self.cap.set(6, cv2.VideoWriter.fourcc('M', 'J', 'P', 'G'))
-        # self.cap.set(3, 480)
-        # self.cap.set(4, 640)
+        self.cap.set(3, 480)
+        self.cap.set(4, 640)
 
     def get_one_frame(self):
         ret, frame = self.cap.read()
